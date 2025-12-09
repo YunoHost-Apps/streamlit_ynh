@@ -3,7 +3,7 @@
 packaging_format = 2
 
 id = "streamlit"
-name = "Streamlit App"
+name = "Streamlit"
 description.en = "Quickly transform Python scripts into interactive web apps"
 description.fr = "Transformez rapidement des scripts Python en applications web interactives"
 
