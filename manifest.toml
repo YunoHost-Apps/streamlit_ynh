@@ -4,8 +4,8 @@ packaging_format = 2
 
 id = "streamlit"
 name = "Streamlit App"
-description.en = "Streamlit lets you transform Python scripts into interactive web apps in minutes, instead of weeks."
-description.fr = "Streamlit permet de transformer des scripts Python en applications web interactives en quelques minutes, plutôt qu'en semaines."
+description.en = "Quickly transform Python scripts into interactive web apps"
+description.fr = "Transformez rapidement des scripts Python en applications web interactives"
 
 version = "1.52.1~ynh1"
 
