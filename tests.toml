@@ -17,7 +17,8 @@ test_format = 1.0
     # -------------------------------
 
     args.app_name = "streamlit_app.py"
-    args.repo = "https://github.com/streamlit/streamlit"
+    # We need a repo with streamlit_app.py and requirements.txt available
+    args.repo = "github.com/ipa-may/ROS_tutorial_survey_streamlit_app/"
 
     # -------------------------------
     # Commits to test upgrade from
