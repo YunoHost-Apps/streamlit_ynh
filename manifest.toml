@@ -57,7 +57,7 @@ ram.runtime = "50M"
     ask.fr = "Donnez l'URL du dépôt du projet Streamlit"
     type = "url"
 
-    [install.name]
+    [install.app]
     ask.en = "Give the name of the Streamlit App to run with Python"
     ask.fr = "Donnez le nom de l'App Streamlit à lancer avec Python"
     type = "string"
