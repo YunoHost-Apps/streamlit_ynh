@@ -14,11 +14,6 @@ ynh_script_progression "Setting up source files..."
 
 _git_clone_or_pull "$install_dir/streamlit_app" $repo
 
-chmod -R o-rwx "$install_dir"
-chown -R "$app:$app" "$install_dir"
-chown "$app:www-data" "$install_dir" "$install_dir/streamlit_app"
-chown -R "$app:www-data" "$install_dir/streamlit_app"
-
 #=================================================
 # INSTALL PYTHON DEPENDENCIES
 #=================================================
@@ -29,6 +24,11 @@ pushd "$install_dir"
     venv/bin/pip install --upgrade pip
     venv/bin/pip install -r streamlit_app/requirements.txt
 popd
+
+chmod -R o-rwx "$install_dir"
+chown -R "$app:$app" "$install_dir"
+chown "$app:www-data" "$install_dir" "$install_dir/streamlit_app"
+chown -R "$app:www-data" "$install_dir/streamlit_app"
 
 #=================================================
 # SYSTEM CONFIGURATION
