@@ -1,5 +1,5 @@
 [Unit]
-Description=Small description of the service
+Description=Streamlit
 After=network.target
 
 [Service]
@@ -7,7 +7,7 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
-ExecStart=__INSTALL_DIR__/venv/bin/python streamlit run __INSTALL_DIR__/streamlit_app/__NAME__
+ExecStart=__INSTALL_DIR__/venv/bin/python streamlit run __INSTALL_DIR__/streamlit_app/__APP_NAME__
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
 
