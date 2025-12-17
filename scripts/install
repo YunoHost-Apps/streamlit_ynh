@@ -8,48 +8,27 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# INITIALIZE AND STORE SETTINGS
-#=================================================
-
-# If you need to, you can define custom settings
-# (or remove this section entirely if not relevant for you)
-#foo="bar"
-#ynh_app_setting_set --key=foo --value=$foo
-
-#ynh_app_setting_set --key=php_upload_max_filesize --value=50M
-#ynh_app_setting_set --key=php_post_max_size --value=50M
-
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Setting up source files..."
 
-### `ynh_setup_source` is used to install an app from a zip or tar.gz file,
-### downloaded from an upstream source, like a git repository.
-### `ynh_setup_source` use the file manifest.toml
-
-# Download, check integrity, uncompress and patch the source from manifest.toml
-#ynh_setup_source --dest_dir="$install_dir" --source_id=$repo
 _git_clone_or_pull "$install_dir/streamlit_app" $repo
-
-### $install_dir will automatically be initialized with some decent
-### permission by default... however, you may need to recursively reapply
-### ownership to all files such as after the ynh_setup_source step
-chmod -R o-rwx "$install_dir"
-chown -R "$app:$app" "$install_dir"
-chown "$app:www-data" "$install_dir" "$install_dir/streamlit_app"
-chown -R "$app:www-data" "$install_dir/streamlit_app"
 
 #=================================================
 # INSTALL PYTHON DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Installing Python dependencies..."
+ynh_script_progression --message="Installing Python Streamlit and dependencies..."
 
 pushd "$install_dir"
     python3 -m venv venv
     venv/bin/pip install --upgrade pip
     venv/bin/pip install -r streamlit_app/requirements.txt
 popd
+
+chmod -R o-rwx "$install_dir"
+chown -R "$app:$app" "$install_dir"
+chown "$app:www-data" "$install_dir" "$install_dir/streamlit_app"
+chown -R "$app:www-data" "$install_dir/streamlit_app"
 
 #=================================================
 # SYSTEM CONFIGURATION
@@ -62,39 +41,7 @@ ynh_config_add_nginx
 # Create a dedicated systemd config
 ynh_config_add_systemd
 
-### `yunohost service add` integrates a service in YunoHost. It then gets
-### displayed in the admin interface and through the others `yunohost service` commands.
-### (N.B.: this line only makes sense if the app adds a service to the system!)
-### If you're not using these lines:
-###   - You can remove these files in conf/.
-###   - Remove the section "REMOVE SERVICE INTEGRATION IN YUNOHOST" in the remove script
-###   - As well as the section "INTEGRATE SERVICE IN YUNOHOST" in the restore script
-###   - And the section "INTEGRATE SERVICE IN YUNOHOST" in the upgrade script
-
-### Additional options starting with 3.8:
-###
-### --needs_exposed_ports "$port" a list of ports that needs to be publicly exposed
-###                               which will then be checked by YunoHost's diagnosis system
-###                               (N.B. DO NOT USE THIS if the port is only internal!!!)
-###
-### --test_status "some command"  a custom command to check the status of the service
-###                               (only relevant if 'systemctl status' doesn't do a good job)
-###
-### --test_conf "some command"    some command similar to "nginx -t" that validates the conf of the service
-###
-### Re-calling 'yunohost service add' during the upgrade script is the right way
-### to proceed if you later realize that you need to enable some flags that
-### weren't enabled on old installs (be careful it'll override the existing
-### service though so you should re-provide all relevant flags when doing so)
 yunohost service add "$app" --description="Transform Python scripts into interactive web apps" --log="/var/log/$app/$app.log"
-
-### `ynh_config_add_logrotate` is used to configure a logrotate configuration for the logs of this app.
-### Use this helper only if there is effectively a log file for this app.
-### If you're not using this helper:
-###   - Remove the section "BACKUP LOGROTATE" in the backup script
-###   - Remove also the section "REMOVE LOGROTATE CONFIGURATION" in the remove script
-###   - As well as the section "RESTORE THE LOGROTATE CONFIGURATION" in the restore script
-###   - And the section "SETUP LOGROTATE" in the upgrade script
 
 # Use logrotate to manage application logfile(s)
 ynh_config_add_logrotate
