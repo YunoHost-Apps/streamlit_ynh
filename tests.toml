@@ -19,6 +19,7 @@ test_format = 1.0
     args.app_name = "streamlit_app.py"
     # We need a repo with streamlit_app.py and requirements.txt available
     args.repo = "https://github.com/ipa-may/ROS_tutorial_survey_streamlit_app"
+    args.port = 8501
 
     # -------------------------------
     # Commits to test upgrade from
