@@ -17,7 +17,7 @@ _git_clone_or_pull "$install_dir/streamlit_app" $repo
 #=================================================
 # INSTALL PYTHON DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Installing Python dependencies..."
+ynh_script_progression --message="Installing Python Streamlit and dependencies..."
 
 pushd "$install_dir"
     python3 -m venv venv
