@@ -21,7 +21,7 @@ Quickly transform Python scripts into interactive web apps
 
 
 ## Screenshots
-![Screenshot of Streamlit](./doc/screenshots/example.jpg)
+![Screenshot of Streamlit](./doc/screenshots/screenshot.png)
 
 ## 📦 Developer info
 
