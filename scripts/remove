@@ -12,8 +12,6 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Removing system configurations related to $app..."
 
-### This should be a symetric version of what happens in the install script
-
 #ynh_config_remove_fail2ban
 
 ynh_config_remove_logrotate
@@ -25,12 +23,6 @@ fi
 ynh_config_remove_systemd
 
 ynh_config_remove_nginx
-
-# Remove other various files specific to the app... such as:
-
-#ynh_safe_rm "/etc/cron.d/$app"
-
-#ynh_safe_rm "/etc/$app"
 
 #=================================================
 # END OF SCRIPT

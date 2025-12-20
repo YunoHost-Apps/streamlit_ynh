@@ -4,8 +4,8 @@ It shall NOT be edited by hand.
 -->
 
 <h1>
-  <img src="https://raw.githubusercontent.com/YunoHost/apps/main/logos/streamlit.png" width="32px" alt="Logo of Streamlit App">
-  Streamlit App, packaged for YunoHost
+  <img src="https://raw.githubusercontent.com/YunoHost/apps/main/logos/streamlit.png" width="32px" alt="Logo of Streamlit">
+  Streamlit, packaged for YunoHost
 </h1>
 
 Quickly transform Python scripts into interactive web apps
@@ -21,13 +21,13 @@ Quickly transform Python scripts into interactive web apps
 
 
 ## Screenshots
-![Screenshot of Streamlit App](./doc/screenshots/example.jpg)
+![Screenshot of Streamlit](./doc/screenshots/screenshot.png)
 
 ## 📦 Developer info
 
 [![Automatic tests level](https://apps.yunohost.org/badge/cilevel/streamlit)](https://ci-apps.yunohost.org/ci/apps/streamlit/)
 
-🛠️ Upstream Streamlit App repository: <https://github.com/streamlit/streamlit>
+🛠️ Upstream Streamlit repository: <https://github.com/streamlit/streamlit>
 
 Pull request are welcome and should target the [`testing` branch](https://github.com/YunoHost-Apps/streamlit_ynh/tree/testing).
 
